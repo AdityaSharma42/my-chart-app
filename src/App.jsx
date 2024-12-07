@@ -12,7 +12,15 @@ function App(){
     .then ((data)=> setChartData(data));
   },[]);
   
-
+  return (
+    <div>
+      <h1>Dynamic Chart Dashboard</h1>
+      <BarChart data={chartData}/>
+      <LineChart data={chartData}/>
+      <ScatterChart data={chartData}/>
+      <BubbleChart data={chartData}/>
+    </div>
+  );
  
   }
 export default App;
