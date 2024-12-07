@@ -1,28 +1,18 @@
-import React, {useEffect, useRef} from 'react';
-import {Chart} from 'chart.js';
+import { useEffect, useState } from 'react';
+import BarChart from './components/BarChart';
+import LineChart from './components/LineChart';
+import ScatterChart from './components/ScatterChart';
+import BubbleChart from './components/BubbleChart';
 
-const ChartComponent= ({type, data, options })=>{
-  const chartRef= useRef(null);
-  const chartInstanceRef= useRef(null);
-
+function App(){
+  const [chartData, setChartData]= useState(null)
   useEffect(()=>{
-    const ctx= chartRef.current.getContext('2d');
+    fetch ('/data/financial_data.json')
+    .then ((response)=> response.json())
+    .then ((data)=> setChartData(data));
+  },[]);
   
-    if (chartInstanceRef.current) {
-       chartInstanceRef.current.destroy();
-    }
-    chartInstanceRef.current = new Chart(ctx, {
-      type,
-      data,
-      options,
-    });
-    return () => {
-      if (chartInstanceRef.current) {
-        chartInstanceRef.current.destroy();
-        chartInstanceRef.current = null;
-      }
-    }, [type, data, options];
-    return <canvas ref={chartRef}></canvas>;
-  })
-};
-export default ChartComponent;
+
+ 
+  }
+export default App;
