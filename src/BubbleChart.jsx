@@ -2,6 +2,9 @@ import React from 'react';
 import ChartComponent from './ChartComponent';
 
 const BubbleChart = ({ data }) => {
+    if (!data || !data.expenses || !data.profits || !data.sales) {
+        return <div>No data available for the Bubble Chart</div>;
+    }
   const bubbleChartData = {
     datasets: [
       {

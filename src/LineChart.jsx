@@ -2,6 +2,9 @@ import React from 'react';
 import ChartComponent from './ChartComponent';
 
 const LineChart = ({ data }) => {
+    if (!data || !data.months || !data.profits) {
+        return <div>No data available for the Line Chart</div>;
+    }
   const lineChartData = {
     labels: data.months,
     datasets: [

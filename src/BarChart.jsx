@@ -2,6 +2,10 @@ import React from 'react'
 import ChartComponent from './ChartComponent';
 
 const BarChart = ({ data }) => {
+    if (!data || !data.months || !data.sales) {
+        return <div>No data available for the Bar Chart</div>;
+    }
+    
     const barChartData = {
       labels: data.months,
       datasets: [

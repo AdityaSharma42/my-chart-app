@@ -2,6 +2,9 @@ import React from 'react';
 import ChartComponent from './ChartComponent';
 
 const ScatterChart = ({ data }) => {
+    if (!data || !data.expenses || !data.profits) {
+        return <div>No data available for the Scatter Chart</div>;
+    }
   const scatterChartData = {
     datasets: [
       {
