@@ -2,11 +2,11 @@ import React from 'react'
 import ChartComponent from './ChartComponent';
 
 const BarChart = ({ data }) => {
-    if (!data || !data.months || !data.sales) {
+    if (!data || !data.months || !data.sales) { //checking if data is available
         return <div>No data available for the Bar Chart</div>;
     }
-    
-    const barChartData = {
+
+    const barChartData = { //creating the data structure for the chart
       labels: data.months,
       datasets: [
         {

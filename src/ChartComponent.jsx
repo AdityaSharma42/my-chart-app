@@ -1,12 +1,14 @@
 import React, {useRef, useEffect} from 'react';
-import {Chart} from 'chart.js';
+import {Chart, registerables} from 'chart.js';
 
-const ChartComponent= ({type, data, options })=>{
+Chart.register(...registerables);
+
+const ChartComponent= ({type, data, options })=>{ //reusable component
   const chartRef= useRef(null);
 
   useEffect(()=>{
     const ctx= chartRef.current.getContext('2d');
-    const chart= new Chart(ctx,{
+    const chart= new Chart(ctx,{ //creating a new chart instance
         type,
         data,
         options,
